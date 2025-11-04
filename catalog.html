@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technokorm</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./catalog.css">
+    <script src="./catalog.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-box">
+            <a href="./index.html">
+                <img class="logo-img" src="./img/tk-logo.png" alt="logo" class="header-logo">
+            </a>
+            <ul class="header-nav_bar">
+                <li class="header-nav--catalog">
+                    <a href="./catalog.html">Каталог</a>
+                    <ul>
+                        <li>
+                            <a href="#" class="category-link" data-category="1">Профилактика</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="2">Ракушка</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="3">Соль-лизунец</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="4">ЗЦМ</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="5">Премиксы</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="6">БВМК</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="7">Комбикорма</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="8">Трикальцийфосфат</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="9">Сода пищевая</a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link" data-category="10">Мел кормовой</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Где купить</a>
+                </li>
+                <li>
+                    <a href="#">Контакты</a>
+                </li>
+            </ul>
+            <div class="header-nav_buttons">
+                <button>
+                    <img src="./img/Profile2.svg" alt="Profile">
+                </button>
+                <button>
+                    <img src="./img/Notification2.svg" alt="Notification">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="catalog-box">
+        <div class="catalog-category">
+            <div class="catalog-category-item">
+                <h4>Каталог продукции</h4>
+                <ul id="categoriesFilter">
+                    <li class="categoryItem active" data-id='0'>Все</li>
+                    <li class="categoryItem" data-id='1'>Профилактика</li>
+                    <li class="categoryItem" data-id='2'>Ракушка</li>
+                    <li class="categoryItem" data-id='3'>Соль-лизунец</li>
+                    <li class="categoryItem" data-id='4'>ЗЦМ</li>
+                    <li class="categoryItem" data-id='5'>Премиксы</li>
+                    <li class="categoryItem" data-id='6'>БВМК</li>
+                    <li class="categoryItem" data-id='7'>Комбикорма</li>
+                    <li class="categoryItem" data-id='8'>Трикальцийфосфат</li>
+                    <li class="categoryItem" data-id='9'>Сода пищевая</li>
+                    <li class="categoryItem" data-id='10'>Мел кормовой</li>
+                </ul>
+            </div>
+            <div class="catalog-category-item">
+                <h4>Для кого</h4>
+                <ul id="animalsFilter">
+                    <li class="animalItem active" data-id='all'>Для всех</li>
+                    <li class="animalItem" data-id='cattle'>Для КРС</li>
+                    <li class="animalItem" data-id='horse'>Для лошадей</li>
+                    <li class="animalItem" data-id='pig'>Для свиней</li>
+                    <li class="animalItem" data-id='bird'>Для птиц</li>
+                </ul>
+            </div>
+        </div>
+        <div class="catalog-goods">
+            <div class="catalog-goods-container">
+                <div class="goods-item">
+                    <a href="#">
+                        <div class="good-item-img">
+                            <img src="./img/latest-placeholder.png" alt="placeholder">
+                        </div>
+                        <h5>Название товара</h5>
+                        <span class="categories">1</span>
+                        <span class="animaltypes">cattle</span>
+                    </a>
+                </div>
+                <div class="goods-item">
+                    <a href="#">
+                        <div class="good-item-img">
+                            <img src="./img/latest-placeholder.png" alt="placeholder">
+                        </div>
+                        <h5>Название товара</h5>
+                        <span class="categories">1</span>
+                        <span class="animaltypes">cattle</span>
+                    </a>
+                </div>
+                <div class="goods-item">
+                    <a href="#">
+                        <div class="good-item-img">
+                            <img src="./img/latest-placeholder.png" alt="placeholder">
+                        </div>
+                        <h5>Название товара</h5>
+                        <span class="categories">1</span>
+                        <span class="animaltypes">cattle</span>
+                    </a>
+                </div>
+                <div class="goods-item">
+                    <a href="#">
+                        <div class="good-item-img">
+                            <img src="./img/latest-placeholder.png" alt="placeholder">
+                        </div>
+                        <h5>Название товара</h5>
+                        <span class="categories">1</span>
+                        <span class="animaltypes">cattle</span>
+                    </a>
+                </div>
+                <div class="goods-item">
+                    <a href="#">
+                        <div class="good-item-img">
+                            <img src="./img/latest-placeholder.png" alt="placeholder">
+                        </div>
+                        <h5>Название товара</h5>
+                        <span class="categories">1</span>
+                        <span class="animaltypes">cattle</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-box">
+
+            <div class="footer-content">
+                <!-- <div class="footer-logo">
+                    <img src="./img/logo.svg" alt="logo">
+                    <p>Agro, short for agriculture, encompasses all
+                        activities related to the cultivation of crops,
+                        food,fiber and agricultural commodities.</p>
+                </div> -->
+                <div class="footer-links">
+                    <!--<h6>Useful Links</h6>-->
+                    <a href="#">420006, г. Казань, ул. Васильченко, 31 </a>
+                    <a href="#">Режим работы: с 7.30 до 16.30 (Обед с 11.30 до 12.30), выходные: сб,вс</a>
+                    <a href="#">Наши представители в других городах</a>
+                </div>
+                <div class="footer-links">
+                    <!-- <h6>Контакты</h6> -->
+                    <span>8 (843) 206-00-43</span>
+                    <span>8 (843) 206-00-34</span>
+                    <span>8 (904) 674-98-00</span>
+                    <a href="kazan.technokorm@rambler.ru">kazan.technokorm@rambler.ru</a>
+                </div>
+                <div class="footer-links">
+                    <!-- <h6>Follow Us</h6> -->
+                    <a href="https://vk.com/technokorm_kzn">VK</a>
+                </div>
+            </div>
+            <!-- <div class="footer-rights">
+                <span>All Right Reserved by Rumi Aktar</span>
+            </div> -->
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

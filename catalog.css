@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: montserrat, sans-serif;
+        padding-inline-start: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.catalog-box {
+    display: flex;
+    padding: 50px 50px;
+    background-color: #F3FFF1;
+    gap: 30px;
+}
+.catalog-category {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.catalog-category-item {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #1B7A43;
+    border-radius: 5px;
+    width: 100%;
+    background-color: white;
+}
+
+.catalog-category-item h4 {
+    background-color: #1B7A43;
+    padding: 10px 20px;
+    color: white;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.catalog-category-item ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.catalog-category-item ul li {
+    font-size: 18px;
+    border-bottom: 1px solid #1B7A4320;
+    cursor: pointer;
+}
+
+.catalog-category-item ul li:hover{
+    font-size: 19px;
+    color: #1B7A43;
+}
+
+.animalItem.active {
+    font-size: 19px;
+    color: #1B7A43;
+    font-weight: 600;
+}
+
+.categoryItem.active {
+    font-size: 19px;
+    color: #1B7A43;
+    font-weight: 600;
+}
+
+.catalog-goods {
+    flex-grow: 1;
+    background-color: white;
+    border: 3px solid #1B7A43;
+    border-radius: 5px;
+    padding: 30px;  
+}
+
+.catalog-goods-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.goods-item {
+    max-width: calc((100% - 90px) / 4);
+    overflow: hidden; 
+    border: 2px solid #1B7A4330;
+    border-radius: 3px;
+}
+
+.goods-item a {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.goods-item-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.goods-item a img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.goods-item a h5 {
+    padding: 20px;
+}
+
+.goods-item span {
+    display: none;
+}
