@@ -1,0 +1,42 @@
+body {
+    background-color: #1B7A43;
+}
+
+a {
+    color: black;
+}
+
+.container {
+    background-color: #F3FFF1;
+}
+
+header{
+    background-color: white;
+}
+
+.header-box {
+    background-color: white;
+}
+
+.locations-box {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    padding-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.locations-box ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.locations-box ul li {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
