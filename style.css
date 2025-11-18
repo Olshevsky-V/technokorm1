@@ -9,7 +9,13 @@ a {
     text-decoration: none;
 }
 
-.header-box {
+header {
+    position: fixed;
+    width: 100%;
+}
+
+.header-box { 
+    background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
