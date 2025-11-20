@@ -149,6 +149,10 @@ header {
     border-radius: 37px;
 }
 
+#slider {
+    background-color: #3C3737;
+}
+
 .slider {
     display: flex;
     
@@ -156,7 +160,7 @@ header {
 
 .slider-btn {
     background-color: #3C3737;
-    border: none;
+    border: 1px solid white;
     color: white;
     font-size: x-large;
     padding: 15px;

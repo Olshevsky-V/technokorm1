@@ -15,6 +15,7 @@ a {
     padding: 50px 50px;
     background-color: #F3FFF1;
     gap: 30px;
+    margin-top: 70px;
 }
 .catalog-category {
     display: flex;

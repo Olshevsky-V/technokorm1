@@ -39,4 +39,5 @@ header{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border-bottom: 1px solid #1B7A43;
 }
