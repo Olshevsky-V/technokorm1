@@ -594,6 +594,10 @@ header {
 
 @media (max-width: 720px) {
     
+    .container {
+        max-width: 720px;
+    }
+
     .header-box {
         padding: 5px;
     }
