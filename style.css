@@ -227,9 +227,10 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 54px;
     padding: 60px 40px;
+    margin: auto;
     box-shadow: 0 0 2px #3C3838;
 }
 
@@ -244,6 +245,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 40px;
+    margin: auto;
 }
 
 .category-box ul li {
@@ -595,7 +597,8 @@ header {
 @media (max-width: 1200px) {
     .category-box {
         padding: 20px;
-        
+        justify-content: center;
+        display: flex;
     }
 
     .category-box ul {
@@ -681,6 +684,8 @@ header {
 
     .category-box {
         padding: 20px;
+        justify-content: center;
+        align-items: center;
     }
 
     .category-box ul {
