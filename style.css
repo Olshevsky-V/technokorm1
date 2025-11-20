@@ -160,7 +160,7 @@ header {
 
 .slider-btn {
     background-color: #3C3737;
-    border: 1px solid white;
+    border: 1px solid #FFFFFF30;
     color: white;
     font-size: x-large;
     padding: 15px;
@@ -222,6 +222,7 @@ header {
     font-size: 17px;
 }
 
+
 .category-box {
     display: flex;
     flex-direction: column;
@@ -240,8 +241,9 @@ header {
 .category-box ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
 }
 
 .category-box ul li {
@@ -249,7 +251,7 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 11px;
-    padding: 37px 85px;
+    padding: 37px 60px;
     border-radius: 10px;
     box-shadow: 0 0 10px #3C3838;
     cursor: pointer;   
@@ -271,7 +273,8 @@ header {
 .growing-box {
     margin: 60px 70px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 30px;
     align-items: center;
 }
 
@@ -579,6 +582,14 @@ header {
 @keyframes spin {
     from {translate: 0;}
     to {translate: -100%;}
+}
+
+@media (max-width: 1300px) {
+    .growing-box {
+        margin: 40px 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 @media (max-width: 480px) {
