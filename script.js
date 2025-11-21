@@ -26,7 +26,45 @@ controls.forEach((e) => {
     })
 })
 
+
+
+
+
+const slider = document.querySelector('#slider');
+let swipeStartX = 0;
+
+slider.addEventListener('touchstart', (e) => {
+  swipeStartX = e.touches[0].clientX
+});
+
+slider.addEventListener('touchend', (e) => {
+  const endX = e.changedTouches[0].clientX;
+  const deltaX = endX - swipeStartX;
+
+  // Регулярно используем порог в 50px (можно настроить)
+  if (Math.abs(deltaX) > 50) {
+    if (deltaX > 0) {
+      let index = slideIndex - 1;
+            if(index < 0) {
+                index = slides.length -1;
+            }
+            show(index)
+    } else {
+      let index = slideIndex + 1;
+            if(index >= slides.length) {
+                index = 0;
+            }
+            show(index);
+    }
+  }
+  }
+);
+
 show(slideIndex);
+
+
+
+
 
 // Обработчик кликов по категориям
 document.querySelectorAll('.category-link').forEach(link => {
@@ -41,6 +79,9 @@ document.querySelectorAll('.category-link').forEach(link => {
     window.location.href = './catalog.html';
   });
 });
+
+
+
 
 document.querySelectorAll('.animal-link').forEach(link => {
   link.addEventListener('click', (e) => {
