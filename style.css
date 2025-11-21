@@ -292,11 +292,13 @@ header {
 .growing-content h4 {
     font-size: 40px;
     color: black;
+    word-break: normal;
 }
 
 .growing-content p { 
     font-size: 20px;
     color: #3C3838;
+    word-break: normal;
 }
 
 .growing-content ul {
@@ -795,5 +797,28 @@ header {
 
     .slider-btn {
         display: none;
+    }
+
+    .growing-content h4 {
+        font-size: 25px;
+    }
+
+    .growing-img {
+        
+    }
+
+    .growing-img img {
+        position: relative;
+        border: solid 1px #1B7A43;
+        object-fit: scale-down;
+    }
+
+
+    .growing-img-outline {
+        display: none;
+    }
+
+    .partners-text {
+        padding: 10px;
     }
 }
