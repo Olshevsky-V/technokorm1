@@ -585,9 +585,14 @@ header {
 }
 
 @keyframes spin {
-    from {translate: 0;}
-    to {translate: -100%;}
+    from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
+
 
 @media (max-width: 1300px) {
 
@@ -627,6 +632,16 @@ header {
 
     .animal-link h5 {
         white-space: nowrap;
+    }
+
+    .partners-list {
+        max-width: none;
+        overflow: clip;
+        flex-shrink: 0;
+    }
+
+    .partners-list_group {
+      min-width: 300%;
     }
 
     .footer-box {
