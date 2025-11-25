@@ -15,6 +15,10 @@ a {
     scroll-behavior: smooth;
 }
 
+ul {
+    list-style: none;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -861,5 +865,21 @@ header {
 @media (max-width: 380px) {
     .slide-content {
         flex-direction: column;
+    }
+
+    .guide-content h4 {
+        font-size: 35px;
+    }
+
+    .partners-text {
+        padding: 20px;
+    }
+
+    .partners-text h4 {
+        font-size: 30px;
+    }
+
+    .footer-box {
+        padding: 20px;
     }
 }

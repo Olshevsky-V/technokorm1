@@ -2,6 +2,9 @@ const catalog = document.querySelector('.catalog-goods-container');
 // Получаем все фильтры
 const categoryItems = document.querySelectorAll('.categoryItem');
 const animalItems = document.querySelectorAll('.animalItem');
+const filters = document.querySelector('#filters');
+const catalogCategory = document.querySelector('.catalog-category');
+const catalogGoods = document.querySelector('.catalog-goods');
 
 /*категории: 
 Все - 0
@@ -206,3 +209,15 @@ animalItems.forEach(item => {
 });
 
 render(goods);
+
+filters.addEventListener('click', () => {
+    if (catalogCategory.classList.contains('active')) {
+        catalogCategory.classList.remove('active');
+        catalogGoods.classList.add('active');
+        filters.classList.remove('active');
+    } else {
+        catalogCategory.classList.add('active');
+        catalogGoods.classList.remove('active');
+        filters.classList.add('active');
+    }
+})
