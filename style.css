@@ -198,6 +198,7 @@ header {
     transition: opacity 0.5s ease-in-out; /* добавляем плавность */
     position: absolute; /* чтобы все слайды накладывались друг на друга, при необходимости */
     top:0; 
+    left: 30px;
     background-color: #3C3737;
     display: flex;
     align-items: center;
@@ -728,9 +729,14 @@ header {
         gap: 20px;
     }
 
+    .slider {
+        height: 350px;
+    }
+
     .slide {
         padding: 5px;
         padding-top: 15px;
+        left: 0;
     }
 
     .slide button {
@@ -849,6 +855,13 @@ header {
         padding-top: 80px;
     }
 
+    .slider {
+        height: 420px;
+    }
+
+    .slide {
+        left: 0;
+    }
     
 
     .growing-content h4 {
@@ -892,6 +905,15 @@ header {
 }
 
 @media (max-width: 380px) {
+
+    .slider {
+        height: 600px;
+    }
+
+    .slide {
+        left: 0;
+    }
+
     .slide-content {
         flex-direction: column;
     }
