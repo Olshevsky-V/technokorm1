@@ -62,6 +62,38 @@ slider.addEventListener('touchend', (e) => {
 
 show(slideIndex);
 
+// Переменная для хранения идентификатора таймера
+let autoSwitchIntervalId;
+
+// Функция для запуска автоматического переключения
+function startAutoSwitch() {
+    // если таймер уже запущен, не запускать заново
+    if (autoSwitchIntervalId) return;
+    autoSwitchIntervalId = setInterval(() => {
+        let next = slideIndex + 1;
+        if (next >= slides.length) {
+            next = 0;
+        }
+        show(next);
+    }, 3000);
+}
+
+// Функция для остановки автоматического переключения
+function stopAutoSwitch() {
+    clearInterval(autoSwitchIntervalId);
+    autoSwitchIntervalId = null; // очистить переменную
+}
+
+// Запуск автоматического переключения при загрузке скрипта
+startAutoSwitch();
+
+// Навешиваем обработчики на контейнер слайдера
+slider.addEventListener('mouseenter', () => {
+    stopAutoSwitch();
+});
+slider.addEventListener('mouseleave', () => {
+    startAutoSwitch();
+});
 
 
 
