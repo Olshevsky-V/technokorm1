@@ -202,10 +202,12 @@ a {
 
     #filters {
     display: flex;
+    color: #3C3838;
     }
 
     #filters.active {
         color: #1B7A43;
+        border-bottom: 2px solid #3C383890;
     }
 
     .header-nav--catalog{
