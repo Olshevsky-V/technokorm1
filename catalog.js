@@ -16,7 +16,7 @@ const catalogGoods = document.querySelector('.catalog-goods');
 БВМК - 6
 Комбикорма - 7
 Трикальцийфосфат - 8
-Соль пищевая - 9
+Сода пищевая - 9
 Мел кормовой - 10
 
 все - all
@@ -26,8 +26,60 @@ const catalogGoods = document.querySelector('.catalog-goods');
 Птица - bird
 
 */
+let goods = [];
 
-const goods = [
+// Функция для декодирования Unicode-escape последовательностей в строке
+/* function decodeUnicode(str) {
+  if (typeof str !== 'string') return str; // Проверка на тип, чтобы избежать ошибок
+  return str.replace(/\\u[\dA-Fa-f]{4}/g, (match) => {
+    return String.fromCharCode(parseInt(match.slice(2), 16));
+  });
+}
+  */
+
+fetch("http://technokorm-db.test/api/goods")
+  .then(response => response.json())
+  .then(data => {
+    let goods = data.data ? data.data : data;
+
+    if (!Array.isArray(goods)) {
+      console.error('Goods is not an array:', goods);
+      return;
+    }
+
+    // Делем преобразование прямо тут и декодируем нужные поля
+    goods = goods.map(card => {
+      // Для свойства title, который может содержать unicode-escape
+      if (card.title && typeof card.title === 'string') {
+        card.title = decodeUnicode(card.title);
+      }
+
+      
+      // Для каждого свойства categories и animalTypes:
+      ['categories', 'animalTypes'].forEach(field => {
+        if (typeof card[field] === 'string') {
+          try {
+            card[field] = JSON.parse(card[field]);
+          } catch {
+            card[field] = []; // Если ошибка парсинга — ставим пустой массив
+            console.error(`Error parsing ${field} for card id ${card.id}`);
+          }
+        } else if (Array.isArray(card[field])) {
+          // Возможно, они уже массива, ничего не делаем
+        } else {
+          // Другой случай: присваиваем пустой массив или оставляем как есть
+          card[field] = [];
+        }
+      });
+
+      return card;
+    });
+
+    render(goods);
+  })
+  .catch(console.error);
+
+/* const goods = [
     {
         id: 0,
         title: 'какое-то название',
@@ -109,6 +161,7 @@ const goods = [
         img: './img/latest-placeholder.png'
     }
 ];
+*/
 
 const render = (array) => {
     catalog.innerHTML = ''
@@ -129,86 +182,47 @@ const render = (array) => {
     })
 }
 
-if (localStorage.getItem('selectedCategory')) {
-    window.addEventListener('load', () => {
-        const category = parseInt(localStorage.getItem('selectedCategory'));
-        let filteredGoods;
-        categoryItems.forEach(item => {
-            item.classList.remove('active');
-            if (parseInt(item.dataset.id) === category) {
-                item.classList.add('active');
-            }
-        })
+// Создаем функцию для комбинированной фильтрации
+let currentCategory = 0; // по умолчанию "все"
+let currentAnimal = 'all';
 
-        if (category) {
-            filteredGoods = goods.filter(card => card.categories.includes(category));
-        }
-        render(filteredGoods);
-        localStorage.clear('selectedCategory');
-    });
+function applyFilters() {
+  let filtered = goods.slice();
+
+  if (currentCategory && currentCategory !== 0) {
+    filtered = filtered.filter(card => card.categories.includes(currentCategory));
+  }
+
+  if (currentAnimal && currentAnimal !== 'all') {
+    filtered = filtered.filter(card => card.animalTypes.includes(currentAnimal));
+  }
+
+  render(filtered);
 }
 
-if (localStorage.getItem('selectedAnimal')) {
-    window.addEventListener('load', () => {
-        const animal = localStorage.getItem('selectedAnimal');
-        let filteredGoods;
-        animalItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.dataset.id === animal) {
-                item.classList.add('active');
-            }
-        })
-
-        if (animal) {
-            filteredGoods = goods.filter(card => card.animalTypes.includes(animal));
-        }
-        render(filteredGoods);
-        localStorage.clear('selectedAnimal');
-    });
-}
-
-
-
-
-// Обработчик для категорий
+// Обработчики для категорий
 categoryItems.forEach(item => {
-    item.addEventListener('click', () => {
-        // Убираем класс active у всех
-        categoryItems.forEach(i => i.classList.remove('active'));
-        // Добавляем класс active к выбранному
-        item.classList.add('active');
+  item.addEventListener('click', () => {
+    // Убираем class active у всех
+    categoryItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
 
-        const categoryId = parseInt(item.dataset.id);
-        let filteredGoods;
-        if (categoryId === 0) {
-            filteredGoods = goods; // все товары
-        } else {
-            filteredGoods = goods.filter(card => card.categories.includes(categoryId));
-        }
-        render(filteredGoods);
-    });
+    // Обновляем текущий фильтр
+    currentCategory = parseInt(item.dataset.id);
+    applyFilters();
+  });
 });
 
-// Обработчик для видов животных
+// Обработчики для видов животных
 animalItems.forEach(item => {
-    item.addEventListener('click', () => {
-        // Убираем класс active у всех
-        animalItems.forEach(i => i.classList.remove('active'));
-        // Добавляем класс актив к выбранному
-        item.classList.add('active');
+  item.addEventListener('click', () => {
+    animalItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
 
-        const animalType = item.dataset.id; // например, 'cattle' или 'all'
-        let filteredGoods;
-        if (animalType === 'all') {
-            filteredGoods = goods; // все товары
-        } else {
-            filteredGoods = goods.filter(card => card.animalTypes.includes(animalType));
-        }
-        render(filteredGoods);
-    });
+    currentAnimal = item.dataset.id;
+    applyFilters();
+  });
 });
-
-render(goods);
 
 filters.addEventListener('click', () => {
     if (catalogCategory.classList.contains('active')) {
