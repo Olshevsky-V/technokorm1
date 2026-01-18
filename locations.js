@@ -7,7 +7,7 @@ function formatTelNumber(number) {
 
 let locations = [];
 
-fetch("http://u196209.test-handyhost.ru/api/locations")
+fetch("http://technokorm-db.test/api/locations")
   .then(response => response.json())
   .then(data => {
     console.log(data);

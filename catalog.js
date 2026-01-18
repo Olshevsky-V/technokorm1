@@ -28,33 +28,19 @@ const catalogGoods = document.querySelector('.catalog-goods');
 */
 let goods = [];
 
-// Функция для декодирования Unicode-escape последовательностей в строке
-/* function decodeUnicode(str) {
-  if (typeof str !== 'string') return str; // Проверка на тип, чтобы избежать ошибок
-  return str.replace(/\\u[\dA-Fa-f]{4}/g, (match) => {
-    return String.fromCharCode(parseInt(match.slice(2), 16));
-  });
-}
-  */
 
 fetch("http://technokorm-db.test/api/goods")
   .then(response => response.json())
   .then(data => {
-    let goods = data.data ? data.data : data;
+    goods = data.data ? data.data : data;
 
     if (!Array.isArray(goods)) {
       console.error('Goods is not an array:', goods);
       return;
     }
 
-    // Делем преобразование прямо тут и декодируем нужные поля
+    // Делаем преобразование прямо тут:
     goods = goods.map(card => {
-      // Для свойства title, который может содержать unicode-escape
-      if (card.title && typeof card.title === 'string') {
-        card.title = decodeUnicode(card.title);
-      }
-
-      
       // Для каждого свойства categories и animalTypes:
       ['categories', 'animalTypes'].forEach(field => {
         if (typeof card[field] === 'string') {
@@ -64,14 +50,8 @@ fetch("http://technokorm-db.test/api/goods")
             card[field] = []; // Если ошибка парсинга — ставим пустой массив
             console.error(`Error parsing ${field} for card id ${card.id}`);
           }
-        } else if (Array.isArray(card[field])) {
-          // Возможно, они уже массива, ничего не делаем
-        } else {
-          // Другой случай: присваиваем пустой массив или оставляем как есть
-          card[field] = [];
         }
       });
-
       return card;
     });
 
