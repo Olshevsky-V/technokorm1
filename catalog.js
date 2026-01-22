@@ -28,6 +28,35 @@ const catalogGoods = document.querySelector('.catalog-goods');
 */
 let goods = [];
 
+function fetchGoods() {
+  fetch("http://vlad.artyfakt.ru/api/goods")
+    .then(response => response.json())
+    .then(data => {
+      goods = data.data ? data.data : data;
+
+      // Преобразование данных
+      goods = goods.map(card => {
+        ['categories', 'animalTypes'].forEach(field => {
+          if (typeof card[field] === 'string') {
+            try {
+              card[field] = JSON.parse(card[field]);
+            } catch {
+              card[field] = [];
+            }
+          }
+        });
+        return card;
+      });
+
+      firstFilter();        // восстанавливаем текущий фильтр
+      applyFilters();       // фильтруем товары
+    })
+    .catch(console.error);
+}
+
+fetchGoods();
+/* let goods = [];
+
 fetch("http://vlad.artyfakt.ru/api/goods")
   .then(response => response.json())
   .then(data => {
@@ -57,6 +86,8 @@ fetch("http://vlad.artyfakt.ru/api/goods")
     render(goods);
   })
   .catch(console.error);
+  */
+
 
 /* const goods = [
     {
@@ -161,9 +192,47 @@ const render = (array) => {
     })
 }
 
-// Создаем функцию для комбинированной фильтрации
-let currentCategory = 0; // по умолчанию "все"
+
 let currentAnimal = 'all';
+let currentCategory = 0;
+
+function firstFilter() {
+  currentAnimal = localStorage.getItem('selectedAnimal');
+
+  currentCategory = localStorage.getItem('selectedCategory');
+  // Если значение в localStorage отсутствует, или равно null
+  if (currentCategory === null) {
+    // Можно оставить текущий `currentCategory` равным 0 по умолчанию
+    currentCategory = 0;
+  } else {
+    // Значение из localStorage — строка, нужно привести к числу
+    currentCategory = parseInt(currentCategory);
+  }
+
+  // Обнуляем активные классы у категорий и животных
+  categoryItems.forEach(i => i.classList.remove('active'));
+  animalItems.forEach(i => i.classList.remove('active'));
+
+  // Устанавливаем активный элемент категории, если есть
+  categoryItems.forEach(i => {
+    if (parseInt(i.dataset.id) === currentCategory) {
+      i.classList.add('active');
+    }
+  });
+
+  // аналогично для животных
+  if (currentAnimal) {
+    animalItems.forEach(i => {
+      if (i.dataset.id === currentAnimal) {
+        i.classList.add('active');
+      }
+    });
+  }
+
+  localStorage.removeItem('selectedAnimal');
+  localStorage.removeItem('selectedCategory');
+}
+
 
 function applyFilters() {
   let filtered = goods.slice();
@@ -214,3 +283,4 @@ filters.addEventListener('click', () => {
         filters.classList.add('active');
     }
 })
+
