@@ -28,7 +28,7 @@ const catalogGoods = document.querySelector('.catalog-goods');
 */
 let goods = [];
 
-fetch("http://technokorm-db.test/api/goods")
+fetch("http://vlad.artyfakt.ru/api/goods")
   .then(response => response.json())
   .then(data => {
     goods = data.data ? data.data : data;
