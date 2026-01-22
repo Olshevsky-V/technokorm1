@@ -6,6 +6,7 @@ const filters = document.querySelector('#filters');
 const catalogCategory = document.querySelector('.catalog-category');
 const catalogGoods = document.querySelector('.catalog-goods');
 
+import { goodsApiLink } from './config.js';
 /*категории: 
 Все - 0
 Профилактика - 1
@@ -29,7 +30,7 @@ const catalogGoods = document.querySelector('.catalog-goods');
 let goods = [];
 
 function fetchGoods() {
-  fetch("http://vlad.artyfakt.ru/api/goods")
+  fetch(goodsApiLink)
     .then(response => response.json())
     .then(data => {
       goods = data.data ? data.data : data;
