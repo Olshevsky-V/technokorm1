@@ -27,3 +27,61 @@ document.querySelectorAll('.animal-link').forEach(link => {
     window.location.href = './catalog.html';
   });
 });
+
+let headerCategories = [
+    {
+        id: 0,
+        name: 'Все',
+        data: '0',
+    },
+    {
+        id: 1,
+        name: 'Профилактика',
+        data: '1',
+    },
+    {
+        id: 2,
+        name: 'Ракушка',
+        data: '2',
+    },
+    {
+        id: 3,
+        name: 'Соль-лизунец',
+        data: '3',
+    },
+    {
+        id: 4,
+        name: 'ЗЦМ',
+        data: '4',
+    },
+    {
+        id: 5,
+        name: 'Премиксы',
+        data: '5',
+    },
+    {
+        id: 6,
+        name: 'БВМК',
+        data: '6',
+    },
+    {
+        id: 7,
+        name: 'Комбикорма',
+        data: '7',
+    },
+    {
+        id: 8,
+        name: 'Трикальцийфосфат',
+        data: '8',
+    },
+    {
+        id: 9,
+        name: 'Сода пищевая',
+        data: '9',
+    },
+    {
+        id: 10,
+        name: 'Мел кормовой',
+        data: '10',
+    }
+]
