@@ -1,3 +1,5 @@
+import { fetchData, animalsApiLink } from './config.js'
+
 const slides = document.querySelectorAll('.slide');
 const controls = document.querySelectorAll('.slider-btn');
 let slideIndex = 0;
@@ -95,7 +97,8 @@ slider.addEventListener('mouseleave', () => {
     startAutoSwitch();
 });
 
-document.querySelectorAll('.animal-link').forEach(link => {
+function linkToAnimals () {
+    document.querySelectorAll('.animal-link').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault(); // чтобы не переходить сразу по ссылке
     const animal = link.dataset.animal; // получаем название категории
@@ -107,5 +110,33 @@ document.querySelectorAll('.animal-link').forEach(link => {
     window.location.href = './catalog.html';
   });
 });
+}
 
+let animals = [];
+async function loadData() {
+    animals = await fetchData(animalsApiLink);
+}
+
+loadData().then(() => {
+    render(animals);
+    linkToAnimals();
+});
+
+const render = (array) => {
+    const animalsBox = document.querySelector('.category-box');
+    animalsBox.innerHTML = `
+        <h4>Каталог</h4>
+        <ul class="categories container"></ul>
+    `
+    const ul = document.querySelector('.categories')
+
+    array.forEach((item) => {
+        ul.insertAdjacentHTML('beforeend', `
+                <li class="animal-link" data-animal="${item.Data}" data-dbRender="true">
+                        <img src="${item.img}" alt="${item.Data}">
+                        <h5>${item.Name}</h5>
+                    </li>
+                `)
+    })
+}
 
