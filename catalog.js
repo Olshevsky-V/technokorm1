@@ -1,3 +1,5 @@
+import { goodsApiLink } from './config.js';
+
 const catalog = document.querySelector('.catalog-goods-container');
 // Получаем все фильтры
 const categoryItems = document.querySelectorAll('.categoryItem');
@@ -6,7 +8,7 @@ const filters = document.querySelector('#filters');
 const catalogCategory = document.querySelector('.catalog-category');
 const catalogGoods = document.querySelector('.catalog-goods');
 
-import { goodsApiLink } from './config.js';
+
 /*категории: 
 Все - 0
 Профилактика - 1

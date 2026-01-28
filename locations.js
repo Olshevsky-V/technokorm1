@@ -1,4 +1,5 @@
 const locationsBox = document.querySelector('.locations-box');
+import { fetchData, locationsApiLink } from './config.js';
 
 function formatTelNumber(number) {
   // Удаляем все символы кроме цифр и знака "+"
@@ -7,7 +8,15 @@ function formatTelNumber(number) {
 
 let locations = [];
 
-fetch("http://vlad.artyfakt.ru/api/locations")
+async function loadData() {
+    locations = await fetchData(locationsApiLink);
+}
+
+loadData().then(() => {
+    render(locations);
+});
+
+/* fetch(locationsApiLink)
   .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -17,6 +26,7 @@ fetch("http://vlad.artyfakt.ru/api/locations")
   .catch(error => {
     console.error('Ошибка запроса:', error);
   });
+  */
 
 // функция для отображения
 const render = (array) => {
@@ -32,12 +42,17 @@ const render = (array) => {
   array.forEach((card) => {
     const telRaw = card.tel; 
     const telHref = formatTelNumber(telRaw);
+    // Создаем переменные для полей, учитывая null
+    const locationHTML = card.location ? `<h3>${card.location}</h3>` : '';
+    const addressHTML = card.addres ? `<span>${card.addres}</span>` : '';
+    const nameHTML = card.name ? `<span>${card.name}</span>` : '';
+
+    // Вставляем только непустые части
     ul.insertAdjacentHTML('beforeend', `
       <li>
-        <h3>${card.location}</h3>
-        <span>${card.addres}</span>
-        <br>
-        <span>${card.name}</span>
+        ${locationHTML}
+        ${addressHTML}
+        ${nameHTML}
         <a href="tel:${telHref}">${card.tel}</a>
       </li>
     `);

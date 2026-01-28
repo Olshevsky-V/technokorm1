@@ -1,32 +1,72 @@
 // Обработчик кликов по категориям
+/*
+function linkToCatalog() {
 document.querySelectorAll('.category-link').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault(); // чтобы не переходить сразу по ссылке
-    const category = link.dataset.category; // получаем название категории
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); // чтобы не переходить сразу по ссылке
+        const category = link.dataset.category; // получаем название категории
 
-    // сохраняем в localStorage
-    localStorage.setItem('selectedCategory', category);
+        // сохраняем в localStorage
+        localStorage.setItem('selectedCategory', category);
 
-    // переходим на страницу каталога
-    window.location.href = './catalog.html';
-  });
+        // переходим на страницу каталога
+        window.location.href = './catalog.html';
+    });
+});
+}; 
+*/
+// Замените функцию linkToCatalog() на:
+
+function linkToCatalog() {
+    const container = document.querySelector('.categoriesList');
+    container.addEventListener('click', (e) => {
+        if (e.target.matches('.category-link')) {
+            e.preventDefault();
+            const category = e.target.dataset.category;
+            localStorage.setItem('selectedCategory', category);
+            window.location.href = './catalog.html';
+        }
+    });
+}
+
+
+
+let categories = [];
+
+import { fetchData, categoriesApiLink } from "./config.js";
+
+async function loadData() {
+    categories = await fetchData(categoriesApiLink);
+}
+
+loadData().then(() => {
+    render(categories);
+    linkToCatalog();
 });
 
 
 
 
-document.querySelectorAll('.animal-link').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault(); // чтобы не переходить сразу по ссылке
-    const animal = link.dataset.animal; // получаем название категории
+const render = (array) => {
+    const categoriesItems = document.querySelector('.categoriesList');
+    categoriesItems.innerHTML = ''
 
-    // сохраняем в localStorage
-    localStorage.setItem('selectedAnimal', animal);
+    array.forEach((item) => {
+        categoriesItems.insertAdjacentHTML('beforeend', `
+                <li>
+                    <a href="#" class="category-link" data-category="${item.id}">${item.Name}</a>
+                 </li>
+                `)
+    })
+}
 
-    // переходим на страницу каталога
-    window.location.href = './catalog.html';
-  });
-});
+
+
+
+
+
+
+
 
 let headerCategories = [
     {

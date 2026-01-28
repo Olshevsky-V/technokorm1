@@ -7,7 +7,8 @@
     <title>Technokorm</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
-    <script src="./header.js" defer></script>
+    <script type="module" src="./header.js" defer></script>
+    <script type="module" src="./config.js" defer></script>
 </head>
 
 <body>
@@ -15,12 +16,12 @@
     <header id="header">
         <div class="header-box container">
             <a href="./index.html">
-                <img class="logo-img" src="./img/tk-logo.png" alt="logo" class="header-logo">
+                <img class="logo-img header-logo" src="./img/tk-logo.png" alt="logo" >
             </a>
             <ul class="header-nav_bar">
                 <li class="header-nav--catalog">
                     <a href="./catalog.html">Каталог</a>
-                    <ul>
+                    <ul class="categoriesList">
                         <li>
                             <a href="#" class="category-link" data-category="1">Профилактика</a>
                         </li>
