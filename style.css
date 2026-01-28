@@ -419,6 +419,7 @@ header {
     gap: 30px;
     justify-content: space-between;
     padding: 0;
+    align-items: flex-start;
 }
 
 .guide-content li {
@@ -426,7 +427,7 @@ header {
     flex-grow: 1;
     align-items: center;
     gap: 30px;
-    max-width: calc(50% - 30px);
+    width: calc(50% - 30px);
     font-weight: bold;
     color: white;
 }
