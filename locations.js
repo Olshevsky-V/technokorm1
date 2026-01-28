@@ -49,7 +49,7 @@ const render = (array) => {
 
     // Вставляем только непустые части
     ul.insertAdjacentHTML('beforeend', `
-      <li>
+      <li data-dbRender="true">
         ${locationHTML}
         ${addressHTML}
         ${nameHTML}

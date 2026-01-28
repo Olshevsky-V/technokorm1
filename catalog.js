@@ -181,7 +181,7 @@ const render = (array) => {
 
     array.forEach((card) => {
         catalog.insertAdjacentHTML('beforeend', `
-            <div class="goods-item">
+            <div class="goods-item" data-dbRender="true">
                     <a href="${card.link}">
                         <div class="good-item-img">
                             <img src="${card.img}" alt="${card.title}">

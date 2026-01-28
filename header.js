@@ -54,7 +54,7 @@ const render = (array) => {
     array.forEach((item) => {
         categoriesItems.insertAdjacentHTML('beforeend', `
                 <li>
-                    <a href="#" class="category-link" data-category="${item.id}">${item.Name}</a>
+                    <a href="#" class="category-link" data-category="${item.id}" data-dbRender="true">${item.Name}</a>
                  </li>
                 `)
     })
