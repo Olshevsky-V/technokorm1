@@ -384,7 +384,7 @@ header {
 }
 
 .guide-content {
-    margin: 100px 70px;
+    margin: 50px;
     padding: 36px 50px;
     background-color: #00000099;
     border-radius: 10px;
@@ -392,6 +392,7 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    max-width: 1200px;
 }
 
 .guide-content h4 {
@@ -417,7 +418,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0;
     align-items: flex-start;
 }
