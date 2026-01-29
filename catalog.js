@@ -58,123 +58,7 @@ function fetchGoods() {
 }
 
 fetchGoods();
-/* let goods = [];
 
-fetch("http://vlad.artyfakt.ru/api/goods")
-  .then(response => response.json())
-  .then(data => {
-    goods = data.data ? data.data : data;
-
-    if (!Array.isArray(goods)) {
-      console.error('Goods is not an array:', goods);
-      return;
-    }
-
-    // Делаем преобразование прямо тут:
-    goods = goods.map(card => {
-      // Для каждого свойства categories и animalTypes:
-      ['categories', 'animalTypes'].forEach(field => {
-        if (typeof card[field] === 'string') {
-          try {
-            card[field] = JSON.parse(card[field]);
-          } catch {
-            card[field] = []; // Если ошибка парсинга — ставим пустой массив
-            console.error(`Error parsing ${field} for card id ${card.id}`);
-          }
-        }
-      });
-      return card;
-    });
-
-    render(goods);
-  })
-  .catch(console.error);
-  */
-
-
-/* const goods = [
-    {
-        id: 0,
-        title: 'какое-то название',
-        categories: [0, 1],
-        animalTypes: ['all', 'cattle'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 1,
-        title: 'какое-то название 1',
-        categories: [0, 3],
-        animalTypes: ['all', 'cattle'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 2,
-        title: 'какое-то название 2',
-        categories: [0, 1],
-        animalTypes: ['all', 'horse'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 3,
-        title: 'какое-то название 3',
-        categories: [0, 3],
-        animalTypes: ['all', 'cattle'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 4,
-        title: 'какое-то название 4',
-        categories: [0, 7],
-        animalTypes: ['all', 'pig'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 5,
-        title: 'какое-то название 5',
-        categories: [0, 9],
-        animalTypes: ['all', 'bird'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 6,
-        title: 'какое-то название 6',
-        categories: [0, 4],
-        animalTypes: ['all', 'horse'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 7,
-        title: 'какое-то название 7',
-        categories: [0, 3],
-        animalTypes: ['all', 'cattle'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 8,
-        title: 'какое-то название 8',
-        categories: [0, 8],
-        animalTypes: ['all', 'horse'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    },
-    {
-        id: 9,
-        title: 'какое-то название 9',
-        categories: [0, 9],
-        animalTypes: ['all', 'cattle'],
-        link: '#',
-        img: './img/latest-placeholder.png'
-    }
-];
-*/
 
 const render = (array) => {
     catalog.innerHTML = ''
@@ -211,6 +95,12 @@ function firstFilter() {
     // Значение из localStorage — строка, нужно привести к числу
     currentCategory = parseInt(currentCategory);
   }
+  
+  if (currentAnimal === null) {
+    currentAnimal = "all";
+  }else{
+    currentAnimal = currentAnimal
+  }
 
   // Обнуляем активные классы у категорий и животных
   categoryItems.forEach(i => i.classList.remove('active'));
@@ -224,13 +114,12 @@ function firstFilter() {
   });
 
   // аналогично для животных
-  if (currentAnimal) {
-    animalItems.forEach(i => {
+  animalItems.forEach(i => {
       if (i.dataset.id === currentAnimal) {
         i.classList.add('active');
       }
     });
-  }
+  
 
   localStorage.removeItem('selectedAnimal');
   localStorage.removeItem('selectedCategory');
