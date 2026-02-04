@@ -1,35 +1,44 @@
-import { fetchData, goodsApiLink, animalsApiLink, categoriesApiLink } from './config.js';
+import { goodsApiLink } from './config.js';
 
 const catalog = document.querySelector('.catalog-goods-container');
-
-
+// Получаем все фильтры
+const categoryItems = document.querySelectorAll('.categoryItem');
+const animalItems = document.querySelectorAll('.animalItem');
 const filters = document.querySelector('#filters');
 const catalogCategory = document.querySelector('.catalog-category');
 const catalogGoods = document.querySelector('.catalog-goods');
-const categoriesFilter = document.querySelector('#categoriesFilter');
-const animalsFilter = document.querySelector('#animalsFilter')
 
 
+/*категории: 
+Все - 0
+Профилактика - 1
+Ракушка - 2
+Соль-лизунец - 3
+ЗЦМ - 4
+Премиксы - 5
+БВМК - 6
+Комбикорма - 7
+Трикальцийфосфат - 8
+Сода пищевая - 9
+Мел кормовой - 10
+
+все - all
+КРС - cattle
+Лошадь - horse 
+Свинья - pig
+Птица - bird
+
+*/
 let goods = [];
-let categories = [];
-let animals = [];
 
-async function loadData() {
-    categories = await fetchData(categoriesApiLink);
-    goods = await fetchData(goodsApiLink);
-    animals = await fetchData(animalsApiLink);
-}
+function fetchGoods() {
+  fetch(goodsApiLink)
+    .then(response => response.json())
+    .then(data => {
+      goods = data.data ? data.data : data;
 
-async function filtersRender() {
-  renderCategoreies(categories);
-  renderAnimals(animals);
-}
-
-
-loadData()
-.then(() => {
-    filtersRender();
-    goods = goods.map(card => {
+      // Преобразование данных
+      goods = goods.map(card => {
         ['categories', 'animalTypes'].forEach(field => {
           if (typeof card[field] === 'string') {
             try {
@@ -41,19 +50,17 @@ loadData()
         });
         return card;
       });
-    
-    firstFilter();       
+
+      firstFilter();        // восстанавливаем текущий фильтр
+      applyFilters();       // фильтруем товары
+    })
+    .catch(console.error);
+}
+
+fetchGoods();
 
 
-    applyFilters();
-
-    filtersUpdate();
-    //renderGoods(goods);
-});
-
-
-
-const renderGoods = (array) => {
+const render = (array) => {
     catalog.innerHTML = ''
 
     array.forEach((card) => {
@@ -72,36 +79,11 @@ const renderGoods = (array) => {
     })
 }
 
-const renderCategoreies = (array) => {
-  categoriesFilter.innerHTML = '';
-
-  array.forEach((item) => {
-        categoriesFilter.insertAdjacentHTML('beforeend', `
-                <li class="categoryItem" data-id='${item.id}'>${item.Name}</li>
-                `)
-    })
-
-}
-
-const renderAnimals = (array) => {
-  animalsFilter.innerHTML = '';
-
-  array.forEach((item) => {
-        animalsFilter.insertAdjacentHTML('beforeend', `
-                <li class="animalItem" data-id='${item.Data}'>${item.Name}</li>
-                `)
-    })
-
-}
-
 
 let currentAnimal = 'all';
 let currentCategory = 0;
 
 function firstFilter() {
-  const categoryItems = document.querySelectorAll('.categoryItem');
-  const animalItems = document.querySelectorAll('.animalItem');
-  
   currentAnimal = localStorage.getItem('selectedAnimal');
 
   currentCategory = localStorage.getItem('selectedCategory');
@@ -144,12 +126,7 @@ function firstFilter() {
 }
 
 
-
-
 function applyFilters() {
-  const categoryItems = document.querySelectorAll('.categoryItem');
-  const animalItems = document.querySelectorAll('.animalItem');
-
   let filtered = goods.slice();
 
   if (currentCategory && currentCategory !== 0) {
@@ -160,13 +137,10 @@ function applyFilters() {
     filtered = filtered.filter(card => card.animalTypes.includes(currentAnimal));
   }
 
-  renderGoods(filtered);
+  render(filtered);
 }
 
 // Обработчики для категорий
-function filtersUpdate(){
-  const categoryItems = document.querySelectorAll('.categoryItem');
-  const animalItems = document.querySelectorAll('.animalItem'); 
 categoryItems.forEach(item => {
   item.addEventListener('click', () => {
     // Убираем class active у всех
@@ -201,4 +175,4 @@ filters.addEventListener('click', () => {
         filters.classList.add('active');
     }
 })
-}
+
