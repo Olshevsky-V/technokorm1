@@ -4,6 +4,8 @@
     font-family: sans-serif;
         padding-inline-start: 0;
     max-width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 html {
@@ -28,6 +30,10 @@ header {
         padding: 0 40px;
     box-shadow: 0 0 10px #3C3838;
     border-bottom:3px solid #3C383830;
+}
+
+img {
+    object-fit: cover;
 }
 
 .container  {
@@ -110,6 +116,7 @@ header {
 }
 
 .banner {
+    background-repeat: repeat;
     background-image:  url(./img/green.svg), url(./img/Rectangle\ 1.svg);
     border: none;
     outline: none;
@@ -378,6 +385,7 @@ header {
 
 .guide-box {
     background-image: url(./img/guide.png);
+    background-color: #477E60;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,4 +1,4 @@
-import { fetchData, goodsApiLink, animalsApiLink, categoriesApiLink } from './config.js';
+import { fetchData, goodsApiLink, animalsApiLink, categoriesApiLink, imagesApiLink } from './config.js';
 
 const catalog = document.querySelector('.catalog-goods-container');
 
@@ -61,7 +61,7 @@ const renderGoods = (array) => {
             <div class="goods-item" data-dbRender="true">
                     <a href="${card.link}">
                         <div class="good-item-img">
-                            <img src="${card.img}" alt="${card.title}">
+                            <img src="${imagesApiLink}${card.img}" alt="${card.title}">
                         </div>
                         <h5>${card.title}</h5>
                         <span class="categories">${card.categories.join(', ')}</span>
