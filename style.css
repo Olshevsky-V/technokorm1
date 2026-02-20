@@ -384,7 +384,8 @@ img {
 }
 
 .guide-box {
-    background-image: url(./img/guide.png);
+    border-top: 2px solid #3C383830;
+    border-bottom: 2px solid #3C383830;
     background-color: #477E60;
     display: flex;
     align-items: center;
