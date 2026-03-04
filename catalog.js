@@ -123,7 +123,7 @@ function renderGoods(array) {
             <div class="goods-item">
                 <a href="#">
                     <div class="good-item-img">
-                        <img src="./img/latest-placeholder.png" alt="placeholder">
+                        <img src="${imagesApiLink}/placeholder.png" alt="placeholder">
                     </div>
                     <h5>Нет товаров</h5>
                     <span class="categories"></span>
@@ -139,7 +139,7 @@ function renderGoods(array) {
         const categoryNames = Array.isArray(card.categories) 
             ? card.categories
                 .map(catId => {
-                    if (catId === 0) return 'Без категории';
+                    if (catId === 1) return 'Без категории';
                     const category = categories.find(c => c.id === catId || c.Id === catId);
                     return category ? (category.name || category.Name || catId) : catId;
                 })
@@ -150,7 +150,7 @@ function renderGoods(array) {
             <div class="goods-item" data-dbRender="true">
                 <a href="#">
                     <div class="good-item-img">
-                        <img src="${imagesApiLink}/${card.image || 'https://placehold.net/600x600.png'}" alt="${card.name || ''}" onerror="this.src='./img/latest-placeholder.png'">
+                        <img src="${imagesApiLink}/${card.image || 'placeholder.png'}" alt="${card.name || ''}" onerror="this.src='./img/latest-placeholder.png'">
                     </div>
                     <h5>${card.name || 'Без названия'}</h5>
                     <span class="categories">${categoryNames.join(', ') || 'Без категории'}</span>
@@ -166,7 +166,7 @@ function renderCategories(array) {
     if (!categoriesFilter) return;
     
     // Очищаем и добавляем ТОЛЬКО ОДИН пункт "Все"
-    categoriesFilter.innerHTML = '<li class="categoryItem active" data-id="0">Все</li>';
+    categoriesFilter.innerHTML = '<li class="categoryItem active" data-id="1">Все</li>';
 
     if (Array.isArray(array)) {
         array.forEach((item) => {
@@ -174,7 +174,7 @@ function renderCategories(array) {
             const name = item.name || item.Name || 'Без названия';
             
             // НЕ добавляем если это уже пункт "Все" (id=0)
-            if (id !== 0) {
+            if (id !== 1) {
                 categoriesFilter.insertAdjacentHTML('beforeend', `
                     <li class="categoryItem" data-id="${id}">${name}</li>
                 `);
@@ -207,14 +207,14 @@ function renderAnimals(array) {
 }
 
 let currentAnimal = 'all';
-let currentCategory = 0;
+let currentCategory = 1;
 
 function firstFilter() {
     const categoryItems = document.querySelectorAll('.categoryItem');
     const animalItems = document.querySelectorAll('.animalItem');
     
     currentAnimal = localStorage.getItem('selectedAnimal') || 'all';
-    currentCategory = parseInt(localStorage.getItem('selectedCategory')) || 0;
+    currentCategory = parseInt(localStorage.getItem('selectedCategory')) || 1;
 
     categoryItems.forEach(i => i.classList.remove('active'));
     animalItems.forEach(i => i.classList.remove('active'));
@@ -240,7 +240,7 @@ function applyFilters() {
     
     let filtered = goods.slice();
 
-    if (currentCategory && currentCategory !== 0) {
+    if (currentCategory && currentCategory !== 1) {
         filtered = filtered.filter(card => 
             Array.isArray(card.categories) && card.categories.includes(currentCategory)
         );

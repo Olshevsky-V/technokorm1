@@ -131,11 +131,11 @@ const render = (array) => {
     const ul = document.querySelector('.categories')
 
     array.forEach((item) => {
-        if(item.id !== 0) {
+        if(item.id !== 1) {
         ul.insertAdjacentHTML('beforeend', `
-                <li class="animal-link" data-animal="${item.Data}" data-dbRender="true">
-                        <img src="${imagesApiLink}${item.img}" alt="${item.Data}">
-                        <h5>${item.Name}</h5>
+                <li class="animal-link" data-animal="${item.data}" data-dbRender="true">
+                        <img src="${imagesApiLink}/${item.image || 'placeholder.png'}" alt="${item.data}">
+                        <h5>${item.name}</h5>
                     </li>
                 `)
         }
