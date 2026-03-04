@@ -6,7 +6,7 @@ export const categoriesApiLink = "http://technokorm-db.test/api/categories";
 
 export const animalsApiLink = "http://technokorm-db.test/api/animals";
 
-export const imagesApiLink = "http://technokorm-db.test/images";
+export const imagesApiLink = "http://technokorm-db.test/storage";
 
 export async function fetchData(apiUrl) {
   const response = await fetch(apiUrl);

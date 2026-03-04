@@ -150,7 +150,7 @@ function renderGoods(array) {
             <div class="goods-item" data-dbRender="true">
                 <a href="#">
                     <div class="good-item-img">
-                        <img src="${imagesApiLink}${card.image || ''}" alt="${card.name || ''}" onerror="this.src='./img/latest-placeholder.png'">
+                        <img src="${imagesApiLink}/${card.image || 'https://placehold.net/600x600.png'}" alt="${card.name || ''}" onerror="this.src='./img/latest-placeholder.png'">
                     </div>
                     <h5>${card.name || 'Без названия'}</h5>
                     <span class="categories">${categoryNames.join(', ') || 'Без категории'}</span>
