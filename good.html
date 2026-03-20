@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technokorm</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./catalog.css">
+    <script type="module" src="./good.js" defer></script>
+    <script type="module" src="./header.js" defer></script>
+    <script type="module" src="./config.js" defer></script>
+    <script type="module" src="./apiRequests.js" defer></script>
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="header-box container">
+            <a href="./index.html">
+                <img class="logo-img" src="./img/tk-logo.png" alt="logo" class="header-logo">
+            </a>
+            <ul class="header-nav_bar">
+                <li>
+                    <a href="#" id="filters">Фильтры</a>
+                </li>
+                <li class="header-nav--catalog">
+                    <a href="./catalog.html">Каталог</a>
+                    <ul class="categoriesList">
+                        <li>
+                            <a href="#" class="category-link" data-category="0">Ошибка подключения db</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./locations.html">Где купить</a>
+                </li>
+                <li>
+                    <a href="#footer">Контакты</a>
+                </li>
+            </ul>
+           <!-- <div class="header-nav_buttons">
+                <button>
+                    <img src="./img/Profile2.svg" alt="Profile">
+                </button>
+                <button>
+                    <img src="./img/Notification2.svg" alt="Notification">
+                </button>
+            </div> -->
+        </div>
+    </header>
+
+    <div class="catalog-box">
+        <div class="catalog-category">
+            <div class="catalog-category-item">
+                <h4>Каталог продукции</h4>
+                <ul id="categoriesFilter">
+                    <li class="categoryItem active" data-id='0'>Все</li>
+                    
+                </ul>
+            </div>
+            <div class="catalog-category-item">
+                <h4>Для кого</h4>
+                <ul id="animalsFilter">
+                    <li class="animalItem active" data-id='all'>Для всех</li>
+                 
+                </ul>
+            </div>
+        </div>
+        <div class="catalog-goods active">
+            <div class="good-container">
+                <div class="good-header">
+                    <div class="good-header--text">
+                        <h3>Название товара</h3>
+                        <p>Какое-то описание описание</p>
+                    </div>
+                    <img src="./img/placeholder.png" alt="placeholder" style="max-width: 300px; max-height: 300px; aspect-ratio: 4 / 4">
+                </div>
+                <div class="good-content">
+                        много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много-много контента
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-box">
+
+            <div class="footer-content">
+                <!-- <div class="footer-logo">
+                    <img src="./img/logo.svg" alt="logo">
+                    <p>Agro, short for agriculture, encompasses all
+                        activities related to the cultivation of crops,
+                        food,fiber and agricultural commodities.</p>
+                </div> -->
+                <div class="footer-links">
+                    <!--<h6>Useful Links</h6>-->
+                    <a href="#">420006, г. Казань, ул. Васильченко, 31 </a>
+                    <a href="#">Режим работы: с 7.30 до 16.30 (Обед с 11.30 до 12.30), выходные: сб,вс</a>
+                    <a href="./locations.html">Наши представители в других городах</a>
+                </div>
+                <div class="footer-links">
+                    <!-- <h6>Контакты</h6> -->
+                    <a href="tel: +78432060043">8 (843) 206-00-43</a>
+                    <a href="tel: +78432060034">8 (843) 206-00-34</a>
+                    <a href="tel: +79046749800">8 (904) 674-98-00</a>
+                    <a href="kazan.technokorm@rambler.ru">kazan.technokorm@rambler.ru</a>
+                </div>
+                <div class="footer-links">
+                    <!-- <h6>Follow Us</h6> -->
+                    <a href="https://vk.com/technokorm_kzn">VK</a>
+                </div>
+            </div>
+            <!-- <div class="footer-rights">
+                <span>All Right Reserved by Rumi Aktar</span>
+            </div> -->
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

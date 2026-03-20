@@ -130,6 +130,23 @@ a {
     display: none;
 }
 
+.good-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.good-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.good-header--text {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 @media (max-width: 719px) {
 
     

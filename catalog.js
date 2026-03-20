@@ -148,7 +148,7 @@ function renderGoods(array) {
 
         catalog.insertAdjacentHTML('beforeend', `
             <div class="goods-item" data-dbRender="true">
-                <a href="#">
+                <a href="./good.html?id=${card.id}">
                     <div class="good-item-img">
                         <img src="${imagesApiLink}/${card.image || 'placeholder.png'}" alt="${card.name || ''}" onerror="this.src='./img/latest-placeholder.png'">
                     </div>
