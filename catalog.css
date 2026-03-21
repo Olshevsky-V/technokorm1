@@ -147,6 +147,61 @@ a {
     gap: 40px;
 }
 
+.good-content {
+    max-width: 100%;
+    
+}
+
+/* В ваш catalog.css или style.css */
+
+.good-content {
+    overflow-x: auto;  /* Добавляет горизонтальную прокрутку при необходимости */
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* Ограничиваем изображения */
+.good-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Ограничиваем таблицы */
+.good-content table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+.good-content table td,
+.good-content table th {
+    word-break: break-word;
+}
+
+/* Ограничиваем iframe и видео */
+.good-content iframe,
+.good-content video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ограничиваем блоки с кодом */
+.good-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Ограничиваем любые вложенные блоки */
+.good-content * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 @media (max-width: 719px) {
 
     

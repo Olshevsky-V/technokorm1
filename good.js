@@ -158,7 +158,7 @@ function renderGoodCard(goodId) {
                  style="max-width: 300px; max-height: 300px;">
         </div>
         <div class="good-content">
-            ${escapeHtml(good.content)}
+            ${good.content}
         </div>
     `;
 }
